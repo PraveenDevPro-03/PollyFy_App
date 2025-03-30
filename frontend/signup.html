@@ -80,6 +80,52 @@
         .subtitle {
             font-size: 16px;
             color: #bbb;
+            margin-top: -10px;
+            margin-bottom: 60px;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 100px;
+            /* margin: auto; */
+            margin-left: 290px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #007bff;
+            display: block;
+        }
+        .upload-icon {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            border: 2px solid white;
+        }
+        .upload-icon:hover {
+            background: #0056b3;
+        }
+        #imageUpload {
+            display: none;
+        }
+        img ,alt{
+           
+           
+            color: rgb(246, 240, 240);
         }
     </style>
 </head>
@@ -88,8 +134,12 @@
         <div class="left-panel">
             <h2 class="app-title">Pollify</h2>
             <p class="subtitle">Upload videos & let users vote, comment & rate!</p>
-            <h4>Create an Account</h4>
-            <!-- <p>Please enter your details to sign up</p> -->
+          <center> <h3>Create an Account</h3></center> 
+            <div class="profile-container">
+                <img id="profileImage" class="profile-pic" src="https://via.placeholder.com/100" alt="Upload Profile">
+                <label for="imageUpload" class="upload-icon">📤</label>
+                <input type="file" id="imageUpload" accept="image/*" onchange="previewImage(event)">
+            </div>
             <form>
                 <div class="mb-3">
                     <label class="form-label">Full Name</label>
@@ -126,5 +176,17 @@
             </div>
         </div>
     </div>
+
+    
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const output = document.getElementById('profileImage');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 </body>
 </html>
