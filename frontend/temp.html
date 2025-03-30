@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polling App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        .app-title {
+            font-size: 45px;
+            font-weight: bold;
+            padding: 15px;
+            text-align: left;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            margin-top: 100px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: #1e1e1e;
+            padding-top: 60px;
+        }
+        .sidebar a {
+            padding: 15px;
+            text-decoration: none;
+            color: gray;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+        }
+        .sidebar a:hover {
+            color: white;
+        }
+        .main-container {
+            margin-left: 250px;
+            display: flex;
+            justify-content: space-between;
+            padding: 80px 30px 50px;
+        }
+        .polls-section {
+            flex-grow: 1;
+            padding-right: 20px;
+            text-align: center;
+        }
+        .profile-card {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 400px;
+        }
+        .profile-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #007bff;
+        }
+        .profile-card h2 {
+            margin-top: 10px;
+            font-size: 22px;
+        }
+        .profile-card p {
+            font-size: 14px;
+            color: gray;
+            margin-bottom: 10px;
+        }
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+        }
+        .profile-stats div {
+            background: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px;
+            flex-grow: 1;
+            text-align: center;
+        }
+        .polls-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .poll-card {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 10px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-title text-white">Pollify App</div>
+    <div class="sidebar">
+        <a href="#" onclick="showSection('dashboard')"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="#" onclick="showSection('createPoll')"><i class="fas fa-plus-circle"></i> Create Poll</a>
+        <a href="#" onclick="showSection('myPolls')"><i class="fas fa-list"></i> My Polls</a>
+        <a href="#" onclick="showSection('votedPolls')"><i class="fas fa-check-circle"></i> Voted Polls</a>
+        <a href="#" onclick="showSection('bookmarks')"><i class="fas fa-bookmark"></i> Bookmarks</a>
+        <a href="#" class="text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+    
+    <div class="main-container">
+        <div class="polls-section">
+            <div id="dashboard" class="polls-container">
+                <div class="poll-card">Poll 1 details...</div>
+                <div class="poll-card">Poll 2 details...</div>
+                <div class="poll-card">Poll 3 details...</div>
+                <div class="poll-card">Poll 4 details...</div>
+            </div>
+            <div id="createPoll" class="d-none">Create Poll Form</div>
+            <div id="myPolls" class="d-none">My Polls Content</div>
+            <div id="votedPolls" class="d-none">Voted Polls Content</div>
+            <div id="bookmarks" class="d-none">Bookmarked Polls Content</div>
+        </div>
+
+        <div class="profile-card">
+            <img src="https://via.placeholder.com/120" alt="User Profile">
+            <h2>User Name</h2>
+            <p>user@example.com</p>
+            <div class="profile-stats">
+                <div>Polls Created: 10</div>
+                <div>Polls Voted: 5</div>
+                <div>Polls Bookmarked: 3</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.polls-section > div').forEach(div => {
+                if (div.id === sectionId) {
+                    div.classList.remove('d-none');
+                } else {
+                    div.classList.add('d-none');
+                }
+            });
+        }
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
